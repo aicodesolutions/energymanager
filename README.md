@@ -1,0 +1,2 @@
+# energymanager
+For cloud deployment
