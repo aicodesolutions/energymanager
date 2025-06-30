@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom responsive breakpoints for extra small devices */
+@layer utilities {
+  @media (min-width: 375px) {
+    .xs\:w-12 {
+      width: 3rem;
+    }
+    .xs\:h-12 {
+      height: 3rem;
+    }
+  }
+}
+
+/* Bolt Badge Responsive Styles */
+@layer components {
+  .bolt-badge-container {
+    /* Ensure the container never shrinks below minimum size */
+    min-width: 2.5rem; /* 40px */
+    min-height: 2.5rem; /* 40px */
+  }
+  
+  .bolt-badge {
+    /* Ensure the badge link maintains proper display */
+    display: inline-block;
+    line-height: 0; /* Prevent extra spacing around image */
+  }
+  
+  .bolt-badge-image {
+    /* Prevent image from being hidden or collapsed */
+    display: block;
+    max-width: 100%;
+    height: auto;
+    /* Ensure minimum size even on very small screens */
+    min-width: 2.5rem; /* 40px */
+    min-height: 2.5rem; /* 40px */
+    /* Maintain aspect ratio */
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+  
+  /* Specific breakpoint fixes */
+  @media (max-width: 374px) {
+    .bolt-badge-image {
+      width: 2.5rem !important; /* 40px */
+      height: 2.5rem !important; /* 40px */
+    }
+  }
+  
+  @media (min-width: 375px) and (max-width: 639px) {
+    .bolt-badge-image {
+      width: 3rem !important; /* 48px */
+      height: 3rem !important; /* 48px */
+    }
+  }
+  
+  @media (min-width: 640px) and (max-width: 767px) {
+    .bolt-badge-image {
+      width: 3.5rem !important; /* 56px */
+      height: 3.5rem !important; /* 56px */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .bolt-badge-image {
+      width: 4rem !important; /* 64px */
+      height: 4rem !important; /* 64px */
+    }
+  }
+}
+
+/* Navigation Header Responsive Fixes */
+@layer components {
+  /* Ensure proper flex behavior on mobile */
+  .navigation-header {
+    min-height: 4rem; /* 64px */
+  }
+  
+  /* Fix for very small screens */
+  @media (max-width: 320px) {
+    .bolt-badge-container {
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+    }
+    
+    /* Reduce spacing on very small screens */
+    .navigation-header .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+      margin-left: 0.25rem;
+    }
+  }
+}
+
+/* Debug styles (remove in production) */
+@layer utilities {
+  .debug-bolt-badge {
+    border: 2px solid red !important;
+    background-color: rgba(255, 0, 0, 0.1) !important;
+  }
+  
+  .debug-container {
+    border: 2px solid blue !important;
+    background-color: rgba(0, 0, 255, 0.1) !important;
+  }
+}
